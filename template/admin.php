@@ -5,10 +5,12 @@
         <title>L'offre de services aux unités</title>
         <link href="../css/style.css" rel="stylesheet" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="/ressources/scripts.js"></script>
     </head>
 
     <body>
-    <script src="/ressources/jsscript.js"></script>
+    
 
 
         <!--| Section Onglets + choix formulaire |-->
@@ -31,7 +33,7 @@
             <input type="radio" name="checkonscreen" id="2" onclick="pagechange('addserv');" />
             <strong><label for="case">Ajouter un Service</label></strong>
 
-            <input type="radio" name="checkonscreen" id="3" onclick="pagechange('delserv')" />
+            <input type="radio" name="checkonscreen" id="3" onclick="pagechange('delserv');" />
             <label for="case"><strong style="color:green">Activer</strong> / <strong style="color:red">Désactiver un Service</strong></label>
         </header>
 
@@ -80,7 +82,7 @@
             </div>
 
             <div id="website">Website du service
-                <input type="text" name="website" disabled="disabled" />
+                <input type="text" name="website" disabled="disabled" value="<?php echo $modserv; ?>" />
             </div>
 
             <div id="lastupby">Nom de l'admin
