@@ -18,7 +18,7 @@
                 $return_name[$key] = $row[0];
             }
 
-            array_multisort($return_state, SORT_DESC, $return_name, SORT_ASC, SORT_STRING, $arrstate);
+            array_multisort($return_state, SORT_DESC, $return_name, SORT_ASC, SORT_NATURAL, $arrstate);
            
 
             foreach($arrstate as $sun){

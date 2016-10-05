@@ -66,26 +66,33 @@ class bddCo{
         } // else script JS erreur
     }
 
-
     function delMit($servdelete, $lastupby){
 
         date_default_timezone_set('CET');
         $RawLastUp = new DateTime();
         $LastUp = $RawLastUp->format('H:i d-m-Y');
 
-	$sql = "UPDATE Meteo SET Actif = 1-Actif WHERE ID = '".$servdelete."'";
-    
+    	$sql = "UPDATE Meteo SET Actif = 1-Actif WHERE ID = '".$servdelete."'";
+        
 
-	$updb = $this->bdd->query($sql);
+    	$updb = $this->bdd->query($sql);
 
-    $sql = "SELECT Actif FROM Meteo WHERE ID = '".$servdelete."'";
-    $value = $this->bdd->query($sql);
+        $sql = "SELECT Actif FROM Meteo WHERE ID = '".$servdelete."'";
+        $value = $this->bdd->query($sql);
 
-    $actif = $value->fetchColumn();
+        $actif = $value->fetchColumn();
 
-    $histo = "INSERT INTO Historique(Service, Actif, LastUpdated, LastUpdatedBy, ChangeType) VALUES('".$servdelete."', '".$actif."', '".$LastUp."','".$lastupby."', 'Activation / Désactivatio')";
+        $histo = "INSERT INTO Historique(Service, Actif, LastUpdated, LastUpdatedBy, ChangeType) VALUES('".$servdelete."', '".$actif."', '".$LastUp."','".$lastupby."', 'Activation / Désactivatio')";
 
-    $updb = $this->bdd->query($histo);
-}
+        $updb = $this->bdd->query($histo);
+    }
 
+    function getWebsite(){
+        $modserv = 2;
+        $sql = "SELECT Website FROM Meteo WHERE ID = '".$modserv."'";
+
+        $updb = $this->bdd->query($sql);
+
+        return $result = $updb->fetchColumn();
+    }
 } ?>

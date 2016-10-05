@@ -30,3 +30,15 @@ function pagechange(id) {
     curr.style.visibility = 'visible';
     curr.style.display = 'block';
 }
+
+function ($){
+	$.fn.changeSite = function(){
+		$.ajax({
+			url: "bddCo.php&f=getWebsite",
+			type: "GET"
+			success: function(website){
+				$("#website").val(website);
+			}
+		});
+	}
+} 

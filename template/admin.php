@@ -89,7 +89,7 @@
                 <input type="text" name="lastupby" disabled="disabled"/>
             </div>
 
-                <input type="submit" value="Modifier" name="modifMit" />
+                <input type="submit" value="Modifier" name="modifMit" onclick="$().changeSite();"/>
             </form>
        </section>
 
