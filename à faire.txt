@@ -1,0 +1,10 @@
+historiser les modifs (créer un nouveau fichier texte avec horodatage et nom de celui qui a modifié à chaque enregistrement)
+
+
+protéger l'administration par Janus
+
+ajouter les maintenances planifiées à l'affichage et à l'administration
+
+possibilité de réinitialiser les 2 fichiers textes en mode "nominal" et "sans maintenance prévue" (avec les noms de services corrects)
+
+flux RSS
