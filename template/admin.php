@@ -8,7 +8,7 @@
     </head>
 
     <body>
-
+    <script src="/ressources/jsscript.js"></script>
 
 
         <!--| Section Onglets + choix formulaire |-->
@@ -87,7 +87,7 @@
                 <input type="text" name="lastupby" disabled="disabled"/>
             </div>
 
-                <input type="submit" value="Modifier" name="modifMit"/>
+                <input type="submit" value="Modifier" name="modifMit" />
             </form>
        </section>
 
@@ -155,7 +155,7 @@
                               }
                         ?>
                     </select>
-                <input type="submit" value="Activer / Désactiver" name="delMit" )/>
+                <input type="submit" value="Activer / Désactiver" name="delMit" onclick="alertBox('delete', servdelete);"/>
             </form>
         </section>
     </body>
