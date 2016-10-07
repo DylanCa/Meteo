@@ -120,7 +120,7 @@
                 <div id="etat">
                     Etat initial du service
                     <br />
-                    <input type="radio" name="gostate" value="1" id="p1" checked="checked" />
+                    <input type="radio" name="gostate" value="1" id="p1"/>
                     <label for="p1"><img src="../images/1-soleil.png" height="40">
                         <br />
                     </label>
@@ -172,6 +172,7 @@
                     </select>
                 <input type="submit" value="Activer / Désactiver" name="delMit" onclick="alertBox('delete', servdelete);"/>
             </form>
+            <div id="histodel"><ul></ul></div>
         </section>
     </body>
     </html>

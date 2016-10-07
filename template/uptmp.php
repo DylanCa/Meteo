@@ -27,23 +27,27 @@
 		<form method="post" action="updates.php">
 	        <input type="hidden" name="tri" value="id">
         	<select name="chooseservice" id="chooseservice">
-        		 <option value="" selected="true" disabled="disabled">Choisir un service</option>
-                 <option value="">Tous les services</option>
+        		<option value="" selected="true">Tous les services</option>
                     <?php foreach($services as $service){
-                                if( $service['Actif'] == 1){
-                                ?> <option value="<?= $service['ID']; ?>" style="color:green">
-                                    <?= $service['Service']; ?>
-                                        </option> <?php 
-                                } else if( $service['Actif'] == 0){
-                                ?> <option value="<?= $service['ID']; ?>" style="color:red">
-                                    <?= $service['Service']; ?>
-                                        </option> <?php 
-                                }
-                              }
-                        ?>
-                    ?>
-                    
-             </select>
+                            if( $service['Actif'] == 1){
+                            ?> <option value="<?= $service['ID']; ?>" style="color:green">
+                                <?= $service['Service']; ?>
+                                </option> <?php 
+                            } else if( $service['Actif'] == 0){
+                            ?> <option value="<?= $service['ID']; ?>" style="color:red">
+                                <?= $service['Service']; ?>
+                                </option> <?php 
+                            }
+                        }?>
+                    ?>        
+            </select>
+
+            <select name="choosemod" id="choosemod">
+                <option value="" selected="true">Toutes les entrées</option>
+                <option value="Modification">Modifications</option>
+                <option value="Ajout">Ajout d'un service</option>
+                <option value="On/Off">Activation / Désactivation</option>
+            </select>
 
             <input type="submit" value="Trier" name="triMit"/>
 
@@ -53,7 +57,7 @@
             <div class="history">
                 <ul>
                 	<?php $display = new display();
-                     $display->printCom($com, $servID); ?>
+                     $display->printCom($com, $servID, $histoKind); ?>
                 </ul>
             </div>
             </section>

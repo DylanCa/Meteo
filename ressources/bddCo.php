@@ -20,7 +20,7 @@ class bddCo{
 
     function getComList(){
        
-        $com = $this->bdd->query('SELECT meteo.ID, meteo.Service, historique.Etat, historique.Commentaire, historique.LastUpdated, historique.LastUpdatedBy, historique.Actif, historique.ChangeType FROM historique RIGHT JOIN meteo ON meteo.ID = historique.Service WHERE historique.LastUpdated IS NOT NULL ORDER BY historique.ID DESC');
+        $com = $this->bdd->query('SELECT meteo.ID, meteo.Service, historique.Etat, historique.Commentaire, historique.LastUpdated, historique.Website, historique.LastUpdatedBy, historique.Actif, historique.ChangeType FROM historique RIGHT JOIN meteo ON meteo.ID = historique.Service WHERE historique.LastUpdated IS NOT NULL ORDER BY historique.ID DESC');
                 
         $data = $com->fetchAll();
         
@@ -82,7 +82,7 @@ class bddCo{
 
         $actif = $value->fetchColumn();
 
-        $histo = "INSERT INTO Historique(Service, Actif, LastUpdated, LastUpdatedBy, ChangeType) VALUES('".$servdelete."', '".$actif."', '".$LastUp."','".$lastupby."', 'Activation / Désactivatio')";
+        $histo = "INSERT INTO Historique(Service, Actif, LastUpdated, LastUpdatedBy, ChangeType) VALUES('".$servdelete."', '".$actif."', '".$LastUp."','".$lastupby."', 'On/Off')";
 
         $updb = $this->bdd->query($histo);
     }
