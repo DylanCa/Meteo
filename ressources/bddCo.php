@@ -11,7 +11,7 @@ class bddCo{
        
         $services = $this->bdd->query('SELECT * FROM Meteo ORDER BY Service');
         $tab = [];
-         while($data = $services->fetch())
+         while($data = $services->fetch(PDO::FETCH_ASSOC))
          { 
              $tab[$data['ID']] = $data;
          }

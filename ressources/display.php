@@ -1,6 +1,7 @@
  <?php class display{
 
     function printServices($servicesList){
+
             $images = array ("néant", "1-soleil", "2-couvert", "3-orage");
             $texte_alt = ["néant", "nominal", "perturbations", "indisponible"];
             $couleur_etat = ["néant","rgba(100,250,100,0.5)","rgba(250,150,0,0.5)","rgba(250,0,0,0.5)"]; 

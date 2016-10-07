@@ -15,19 +15,19 @@
         $lastupby = $_REQUEST['lastupby'];
     }
 
-    if (!empty($_REQUEST['com'])){
-        $com = $_REQUEST['com'];
+    if (!empty($_REQUEST['commod'])){
+        $com = $_REQUEST['commod'];
     }
 
-    if (!empty($_REQUEST['website'])){
-        $website = $_REQUEST['website'];
+    if (!empty($_REQUEST['websitemod'])){
+        $website = $_REQUEST['websitemod'];
     }
 
     switch($tmp){
         case 'modify':
            
-            $bddCo->modifMit($_REQUEST['etatmod'], $com, $lastupby, $website, $_REQUEST['modserv']);
-
+            $bddCo->modifMit($_REQUEST['etatmod'], $com, $lastupby, $website, $_REQUEST['modservmenu']);
+            
             header("Location: /admin_meteo.php");
             exit();
             break;
@@ -35,7 +35,7 @@
 
         case 'add':
             
-            $bddCo->addMit($_REQUEST['servadd'], $_REQUEST['gostate'], $website, $lastupby);
+            $bddCo->addMit($_REQUEST['servadd'], $_REQUEST['gostate'], $lastupby, $website);
 
             header("Location: /admin_meteo.php");
             exit(); 

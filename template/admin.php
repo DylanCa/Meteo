@@ -10,8 +10,18 @@
     </head>
 
     <body>
-    
+<?php echo "<script>";
+    echo "var tab = {\n";
+    foreach($services as $service){
+       echo $service['ID']." : {Website : \"".$service['Website']."\", LastUpdatedBy : \"".$service['LastUpdatedBy']."\", Commentaire : \"".$service['Commentaire']."\", Etat : \n".$service['Etat']."\n},\n";
+    }
 
+    echo "};";
+    echo "</script>"; ?>
+
+    <!-- <script type="text/javascript">
+       var tab = <?php echo json_encode($services) ?>;
+    </script> */ -->
 
         <!--| Section Onglets + choix formulaire |-->
 
@@ -37,17 +47,19 @@
             <label for="case"><strong style="color:green">Activer</strong> / <strong style="color:red">Désactiver un Service</strong></label>
         </header>
 
-
-
+<?php foreach($services as $service){
+    
+} 
+    ?>
         <!--| Section Modifier un Service |-->
 
         <section id="modserv" class="form" style="visibility:visible; display:block">
             <form method="post" action="admin_meteo.php">
                 <input type="hidden" name="act" value="modify">
-                <div id="modserv">
-                    <label for="modserv">Quel service voulez-vous modifier ?</label>
+                <div id="modservdiv">
+                    <label for="modservmenu">Quel service voulez-vous modifier ?</label>
                     <br />
-                    <select name="modserv" id="modserv">
+                    <select name="modservmenu" id="modserv"> <!-- The Dropdown menu to get the DB ID from --> 
                          <option value="" selected="true" disabled="disabled">Choisir un service</option>
                         <?php foreach($services as $service){
                                 if( $service['Actif'] == 1){
@@ -62,7 +74,7 @@
 
             <div id="etat">Dans quel état est ce service ?
                 <br />
-                <input type="radio" name="etatmod" value="1" id="o1" checked="checked" />
+                <input type="radio" name="etatmod" value="1" id="o1" />
                 <label for="o1"><img src="../images/1-soleil.png" height="40">
                     <br />
                 </label>
@@ -78,18 +90,19 @@
                 </label>
             </div>
 
-            <div id="com">Commentaire à ajouter<textarea name="com" rows="5" cols="30" maxlength="200"></textarea>
+            <div id="commod">Commentaire à ajouter
+                <textarea name="commod" rows="5" cols="30" maxlength="200"></textarea>
             </div>
 
-            <div id="website">Website du service
-                <input type="text" name="website" disabled="disabled" value="<?php echo $modserv; ?>" />
+            <div id="websitediv">Website du service
+                <input type="text" name="websitemod"/> <!-- I want to add the website in there --> 
             </div>
 
             <div id="lastupby">Nom de l'admin
-                <input type="text" name="lastupby" disabled="disabled"/>
+                <input type="text" name="lastupby"/>
             </div>
 
-                <input type="submit" value="Modifier" name="modifMit" onclick="$().changeSite();"/>
+                <input type="submit" value="Modifier" name="modifMit" />
             </form>
        </section>
 
