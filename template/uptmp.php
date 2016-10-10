@@ -3,14 +3,15 @@
 
 <head>
         <title>Météo des Services CNRS | En cours de maintenance</title>
-        <link href="../css/style.css" type="text/css" rel="stylesheet" />
+        <link href="../css/style.css" type="text/css" rel="stylesheet" />  
+        <script src="/ressources/scripts.js"></script>
+        
 
     </head>
 
     <body>
-
+        
         <header>
-
             <h1>Météo des Services CNRS | WIP</h1>
             <nav style='clear:left'>
                 <div id="menu">
@@ -27,7 +28,7 @@
 		<form method="post" action="updates.php">
 	        <input type="hidden" name="tri" value="id">
         	<select name="chooseservice" id="chooseservice">
-        		<option value="" selected="true">Tous les services</option>
+        		<option value="">Tous les services</option>
                     <?php foreach($services as $service){
                             if( $service['Actif'] == 1){
                             ?> <option value="<?= $service['ID']; ?>" style="color:green">
@@ -39,16 +40,18 @@
                                 </option> <?php 
                             }
                         }?>
-                    ?>        
-            </select>
+                    ?>       
+            </select>            
+            <script>lastDDM('chooseservice', <?php echo $_REQUEST['chooseservice'] ?>);</script> 
 
             <select name="choosemod" id="choosemod">
-                <option value="" selected="true">Toutes les entrées</option>
+                <option value="">Toutes les entrées</option>
                 <option value="Modification">Modifications</option>
                 <option value="Ajout">Ajout d'un service</option>
                 <option value="On/Off">Activation / Désactivation</option>
             </select>
 
+            <script>lastDDM('choosemod', <?php echo json_encode($_REQUEST['choosemod']) ?>);</script>
             <input type="submit" value="Trier" name="triMit"/>
 
 		</form>

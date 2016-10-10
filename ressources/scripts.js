@@ -1,18 +1,4 @@
-function alertBox(type, service){
-	
-	switch(type){
-		case 'modify':
-			window.alert('Le service ' + service + ' a bien été modifié.');
-			break;
 
-		case 'delete':
-			window.alert('Le service ' + service + ' a bien été supprimé.');
-			break;
-
-		default:
-			break;
-	}
-}
 
 function pagechange(id) {
 
@@ -30,6 +16,7 @@ function pagechange(id) {
     curr.style.visibility = 'visible';
     curr.style.display = 'block';
 }
+
 $(document).ready(function () {
 
     // everytime the dropdown changes
@@ -44,3 +31,10 @@ $(document).ready(function () {
 
 })
 
+
+function lastDDM(id, value){
+  var element = document.getElementById(id);
+  element.value = value;
+  console.log(value);
+
+}

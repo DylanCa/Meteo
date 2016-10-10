@@ -19,10 +19,6 @@
     echo "};";
     echo "</script>"; ?>
 
-    <!-- <script type="text/javascript">
-       var tab = <?php echo json_encode($services) ?>;
-    </script> */ -->
-
         <!--| Section Onglets + choix formulaire |-->
 
         <header>
@@ -59,13 +55,12 @@
                 <div id="modservdiv">
                     <label for="modservmenu">Quel service voulez-vous modifier ?</label>
                     <br />
-                    <select name="modservmenu" id="modserv"> <!-- The Dropdown menu to get the DB ID from --> 
+                    <select name="modservmenu" id="modserv">
                          <option value="" selected="true" disabled="disabled">Choisir un service</option>
                         <?php foreach($services as $service){
                                 if( $service['Actif'] == 1){
-                                ?> <option value=" <?= $service['ID']; ?>" style="color:green">
-                                    <?= $service['Service']; ?>
-                                        </option> <?php 
+                                ?> <option value="<?= $service['ID']; ?>" style="color:green"><?= $service['Service']; ?></option>
+                                 <?php 
                                 }
                               }
                         ?>
@@ -121,7 +116,7 @@
                     Etat initial du service
                     <br />
                     <input type="radio" name="gostate" value="1" id="p1"/>
-                    <label for="p1"><img src="../images/1-soleil.png" height="40">
+                    <label for="p1" selected="true"><img src="../images/1-soleil.png" height="40">
                         <br />
                     </label>
                     <input type="radio" name="gostate" value="2" id="p2" />
