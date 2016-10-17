@@ -1,7 +1,9 @@
 <?php include_once("bddCo.php");
-include_once("display.php");
+include_once("display.php"); 
 
-
+session_start();
+$bddCo = new bddCo();
+$display = new display();
 
 function comp($a, $b)
 {
@@ -9,12 +11,6 @@ function comp($a, $b)
         return 0;
     }
     return ($a < $b) ? -1 : 1;
-}
-
-function submit($submit){
-   if(isset($_POST[$submit])){
-     $bddCo = new bddCo;
-     $bddCo->$submit(); }
 }
 
 

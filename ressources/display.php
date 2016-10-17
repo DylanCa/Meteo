@@ -1,4 +1,5 @@
- <?php class display{
+ <?php 
+ class display{
 
     function printServices($servicesList){
 

@@ -4,7 +4,13 @@
     <head>
         <title>Météo des Services CNRS | En cours de maintenance</title>
         <link href="../css/style.css" type="text/css" rel="stylesheet" />
-        
+        <?php $bddCo->checkUser();
+        if($bddCo->logged == 1){
+            echo '<a> Bienvenue '.$bddCo->user.' !<br /></a>';
+            echo '<a href="?action=logout">Se déconnecter</a>';
+        } else { echo'<a href="?action=shiblogin">login avec Shibboleth</a>'; } 
+        ?>
+
     </head>
 
     <body>
@@ -17,7 +23,8 @@
                 <div id="menu">
                     <ul id="onglets">
                         <li class="active"><a href="index.php">Dashboard Météo</a></li>
-                        <li><a href="admin_meteo.php">Administration</a></li>
+                        <?php if($bddCo->logged == 1){
+                            echo '<li><a href="admin_meteo.php">Administration</a></li>';}?>
                         <li><a href="updates.php">Historique de modifications</a></li>
                     </ul>
                 </div>
@@ -28,8 +35,7 @@
             <div id="affichage">
                 <ul class="meteo">
 
-                    <?php $display = new display();
-                    $display->printServices($services);?>
+                    <?php $display->printServices($services);?>
 
                 </ul>
             </div>

@@ -35,6 +35,5 @@ $(document).ready(function () {
 function lastDDM(id, value){
   var element = document.getElementById(id);
   element.value = value;
-  console.log(value);
 
 }

@@ -1,11 +1,35 @@
 <?php 
 
 class bddCo{
-    
+
+    var $user = '';
+    var $mail = '';
+    var $role = '';
+    var $logged = 0;
+
    public function __construct(){ 
+        
+
        $this->bdd = new PDO('mysql:host=localhost;dbname=meteodesservicescnrs;charset=utf8', 'root', ''); 
    }
    
+   function shibLogin(){
+        header("Location: https://application.cnrs.fr/Shibboleth.sso/Login?target=https://application.cnrs.fr/myBlog"); ## A changer en fonction
+        ## Cookies
+        exit();
+   }
+
+   function checkUser(){
+        if(isset($_SESSION['user'])){
+            $check = $this->bdd->query("SELECT Prenom, Nom, Role FROM Users WHERE Mail = '".$_SESSION['user']."'");
+
+            $user = $check->fetch();
+            $this->user = $user['Prenom']. " " .$user['Nom'];
+            $this->role = $user['Role'];
+            $this->mail = $_SESSION['user'];
+            $this->logged = 1;
+        }
+   }
 
     function getListServices(){
        
@@ -85,6 +109,19 @@ class bddCo{
         $histo = "INSERT INTO Historique(Service, Actif, LastUpdated, LastUpdatedBy, ChangeType) VALUES('".$servdelete."', '".$actif."', '".$LastUp."','".$lastupby."', 'On/Off')";
 
         $updb = $this->bdd->query($histo);
+    }
+
+    function addmin($name, $surname, $mail, $role){
+       
+        $checksql = "SELECT * FROM USERS WHERE Mail = '".$mail."'";
+
+        $nbrow = $this->bdd->query($checksql)->rowCount();
+
+       if($nbrow == 0){
+            $sql = "INSERT INTO Users(Nom, Prenom, Mail, Role) VALUES('".$name."','".$surname."','".$mail."',".$role.")";
+
+            $updb = $this->bdd->query($sql);
+        } // else script erreur
     }
 
     function getWebsite(){

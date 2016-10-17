@@ -17,7 +17,9 @@
                 <div id="menu">
                     <ul id="onglets">
                         <li><a href="index.php">Dashboard Météo</a></li>
-                        <li><a href="admin_meteo.php">Administration</a></li>
+                        <?php $bddCo->checkUser();
+                            if($bddCo->logged == 1){
+                                echo '<li><a href="admin_meteo.php">Administration</a></li>';}?>
                         <li  class="active"><a href="updates.php">Historique de modifications</a></li>
                     </ul>
                 </div>
@@ -59,8 +61,7 @@
 		<section id="dashcom" style='float:left'>
             <div class="history">
                 <ul>
-                	<?php $display = new display();
-                     $display->printCom($com, $servID, $histoKind); ?>
+                	<?php $display->printCom($com, $servID, $histoKind); ?>
                 </ul>
             </div>
             </section>

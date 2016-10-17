@@ -6,6 +6,8 @@
         <link href="../css/style.css" rel="stylesheet" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Si pas internet : <script src="/ressources/jquery-3.1.1.min.js"></script> -->
+        
         <script src="/ressources/scripts.js"></script>
     </head>
 
@@ -41,6 +43,9 @@
 
             <input type="radio" name="checkonscreen" id="3" onclick="pagechange('delserv');" />
             <label for="case"><strong style="color:green">Activer</strong> / <strong style="color:red">Désactiver un Service</strong></label>
+
+            <input type="radio" name="checkonscreen" id="2" onclick="pagechange('modadmin');" />
+            <strong><label for="case">Ajouter un administrateur</label></strong>
         </header>
 
 <?php foreach($services as $service){
@@ -93,8 +98,8 @@
                 <input type="text" name="websitemod"/> <!-- I want to add the website in there --> 
             </div>
 
-            <div id="lastupby">Nom de l'admin
-                <input type="text" name="lastupby"/>
+            <div id="lastupby">Dernière modification par : 
+                <input type="text" name="lastupby" disabled/>
             </div>
 
                 <input type="submit" value="Modifier" name="modifMit" />
@@ -133,8 +138,8 @@
                     <input type="text" name="website" />
                 </div>
                 
-                <div id="lastupby">Nom de l'admin
-                    <input type="text" name="lastupby" disabled="disabled"/>
+                <div id="addlastupby">Nom de l'admin
+                    <input type="text" name="addlastupby" disabled="disabled" value=<?php echo '"'.$bddCo->user.'"'; ?>>
                 </div>
 
                 <input type="submit" value="Ajouter" name="addMit" />
@@ -165,9 +170,31 @@
                               }
                         ?>
                     </select>
-                <input type="submit" value="Activer / Désactiver" name="delMit" onclick="alertBox('delete', servdelete);"/>
+                <input type="submit" value="Activer / Désactiver" name="delMit">
             </form>
             <div id="histodel"><ul></ul></div>
+        </section>
+
+        <!--| Section Modification Administrateurs |-->
+
+        <section id="modadmin" class="form" style="visibility:hidden; display:none">
+            <form method="post" action="admin_meteo.php">
+                <input type="hidden" name="act" value="addmin">
+                <div id="surnameadmin">Quel est le prénom de l'administrateur à ajouter ?
+                    <input type="text" name="surnameadmin">
+                </div>
+                <div id="nameadmin">Quel est le nom de l'administrateur à ajouter ?
+                    <input type="text" name="nameadmin">
+                </div>
+                <div id="mailadmin">Quel est l'adresse mail de l'administrateur à ajouter ?
+                    <input type="text" name="mailadmin">
+                </div>
+                <div id="rank">Sera-t-il super-administrateur ?
+                    <input type="radio" name="superadmin" value="1" id="yes"/> Yes
+                    <input type="radio" name="superadmin" value="2" id="no"/> No
+                </div>
+                <input type="submit" value="Ajouter Admin" name="adminMit" />
+            </form>
         </section>
     </body>
     </html>
