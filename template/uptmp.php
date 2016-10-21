@@ -4,7 +4,7 @@
 <head>
         <title>Météo des Services CNRS | En cours de maintenance</title>
         <link href="../css/style.css" type="text/css" rel="stylesheet" />  
-        <script src="/ressources/scripts.js"></script>
+        <script src="./ressources/scripts.js"></script>
         
 
     </head>

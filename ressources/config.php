@@ -1,5 +1,5 @@
-<?php include_once("bddCo.php");
-include_once("display.php"); 
+<?php include_once("./ressources/bddCo.php");
+include_once("./ressources/display.php"); 
 
 session_start();
 $bddCo = new bddCo();

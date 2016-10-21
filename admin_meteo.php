@@ -1,4 +1,4 @@
-<?php include("/ressources/config.php"); 
+<?php include("./ressources/config.php"); 
     
     $bddCo->checkUser();
     if(isset($bddCo->user) && $bddCo->role == 1){

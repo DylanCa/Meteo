@@ -1,4 +1,4 @@
-<?php include("/ressources/config.php"); 
+<?php include("./ressources/config.php"); 
 
 $services = $bddCo->getListServices();
 

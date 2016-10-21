@@ -3,12 +3,12 @@
 
     <head>
         <title>L'offre de services aux unités</title>
-        <link href="../css/style.css" rel="stylesheet" type="text/css">
+        <link href="./css/style.css" rel="stylesheet" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Si pas internet : <script src="/ressources/jquery-3.1.1.min.js"></script> -->
         
-        <script src="/ressources/scripts.js"></script>
+        <script src="./ressources/scripts.js"></script>
     </head>
 
     <body>

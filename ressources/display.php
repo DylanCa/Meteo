@@ -46,46 +46,47 @@
 
         $images = array ("néant", "1-soleil", "2-couvert", "3-orage");
 
-        foreach($comList as $com){
-            if(($com['ID'] == $servID || $servID == NULL) && ($com['ChangeType'] == $histoKind || $histoKind == NULL)){
-                if($com['Etat'] != 0 && $com['Actif'] == 1){
-                    echo "<li><img src=\"images/" . $images[$com['Etat']] . ".svg\" title=\"" . $com['Service'] . "\" alt=\"" .$com['Service']. "\" height=\"20px\" style=\"vertical-align:middle\"> - <strong>".$com['Service']."</strong> - <i>Last Update : ".$com['LastUpdated']." by ".$com['LastUpdatedBy']."</i> - Update Type : <strong>".$com['ChangeType']."</strong><ul>";
-                    if(!empty($com['Commentaire'])){
-                        echo "<li><strong><i>Ajout d'un commentaire </i></strong>: ( ".$com['Commentaire']." )</li><p/>";
-                    }
-                    if(!empty($com['Website'])){
-                        echo "<li><i><a href=\"".$com['Website']."\">Ajout d'un site Web ( ".$com['Website'].")</a></i></ul></li><p/>";
-                    } else {
-                        echo "</ul><p/>";
-                    }
-                } else {
-                    if($com['Actif'] == 0){
-                        echo "<li style='color:red'><strong >".$com['Service']."</strong> - <i>Last Update : ".$com['LastUpdated']."</i> - Update Type : <strong>Desactivation</strong><ul>";
-
-                       if(!empty($com['Commentaire'])){
-                        echo "<li> ".$com['Commentaire']."</li><p/>";
-                        }
-                        if(!empty($com['Website'])){
-                            echo "<li> ".$com['Website']."</ul></li><p/>";
-                        } else {
-                            echo "</ul><p/>";
-                        }
-                    } else {
-                        echo "<li style='color:green'><strong >".$com['Service']."</strong> - <i>Last Update : ".$com['LastUpdated']."</i> - Update Type : <strong>Activation</strong><ul>";
-
+        if($comList != 0){
+                foreach($comList as $com){
+                if(($com['ID'] == $servID || $servID == NULL) && ($com['ChangeType'] == $histoKind || $histoKind == NULL)){
+                    if($com['Etat'] != 0 && $com['Actif'] == 1){
+                        echo "<li><img src=\"images/" . $images[$com['Etat']] . ".svg\" title=\"" . $com['Service'] . "\" alt=\"" .$com['Service']. "\" height=\"20px\" style=\"vertical-align:middle\"> - <strong>".$com['Service']."</strong> - <i>Last Update : ".$com['LastUpdated']." by ".$com['LastUpdatedBy']."</i> - Update Type : <strong>".$com['ChangeType']."</strong><ul>";
                         if(!empty($com['Commentaire'])){
-                        echo "<li> ".$com['Commentaire']."</li><p/>";
+                            echo "<li><strong><i>Ajout d'un commentaire </i></strong>: ( ".$com['Commentaire']." )</li><p/>";
                         }
                         if(!empty($com['Website'])){
-                            echo "<li> ".$com['Website']."</ul></li><p/>";
+                            echo "<li><i><a href=\"".$com['Website']."\">Ajout d'un site Web ( ".$com['Website'].")</a></i></ul></li><p/>";
                         } else {
                             echo "</ul><p/>";
+                        }
+                    } else {
+                        if($com['Actif'] == 0){
+                            echo "<li style='color:red'><strong >".$com['Service']."</strong> - <i>Last Update : ".$com['LastUpdated']."</i> - Update Type : <strong>Desactivation</strong><ul>";
+
+                           if(!empty($com['Commentaire'])){
+                            echo "<li> ".$com['Commentaire']."</li><p/>";
+                            }
+                            if(!empty($com['Website'])){
+                                echo "<li> ".$com['Website']."</ul></li><p/>";
+                            } else {
+                                echo "</ul><p/>";
+                            }
+                        } else {
+                            echo "<li style='color:green'><strong >".$com['Service']."</strong> - <i>Last Update : ".$com['LastUpdated']."</i> - Update Type : <strong>Activation</strong><ul>";
+
+                            if(!empty($com['Commentaire'])){
+                            echo "<li> ".$com['Commentaire']."</li><p/>";
+                            }
+                            if(!empty($com['Website'])){
+                                echo "<li> ".$com['Website']."</ul></li><p/>";
+                            } else {
+                                echo "</ul><p/>";
+                            }
                         }
                     }
                 }
             }
-            
-        }
+        } else { echo "<strong>Il n'y a pas eu de modification."; }
 
     }
 }
