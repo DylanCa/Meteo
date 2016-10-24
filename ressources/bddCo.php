@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class bddCo{
 
@@ -21,7 +21,8 @@ class bddCo{
 
    function checkUser(){
         if(isset($_SESSION['user'])){
-            $check = $this->bdd->query("SELECT Prenom, Nom, Role FROM Users WHERE Mail = '".$_SESSION['user']."'");
+            $check = $this->bdd->query("SELECT Prenom, Nom, Role FROM users WHERE Mail = '".$_SESSION['user']."'");
+
 
             $user = $check->fetch();
             $this->user = $user['Prenom']. " " .$user['Nom'];

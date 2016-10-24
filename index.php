@@ -1,7 +1,7 @@
 <?php include("./ressources/config.php"); 
 
-$services = $bddCo->getListServices();
 
+$services = $bddCo->getListServices();
 
 if(isset($_REQUEST['action'])){
 	if($_REQUEST['action'] == 'shiblogin'){

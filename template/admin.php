@@ -3,12 +3,13 @@
 
     <head>
         <title>L'offre de services aux unités</title>
-        <link href="./css/style.css" rel="stylesheet" type="text/css">
+        <link href="../css/style.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Si pas internet : <script src="/ressources/jquery-3.1.1.min.js"></script> -->
         
-        <script src="./ressources/scripts.js"></script>
+        <script src="/ressources/scripts.js"></script>
     </head>
 
     <body>
@@ -44,8 +45,8 @@
             <input type="radio" name="checkonscreen" id="3" onclick="pagechange('delserv');" />
             <label for="case"><strong style="color:green">Activer</strong> / <strong style="color:red">Désactiver un Service</strong></label>
 
-            <input type="radio" name="checkonscreen" id="2" onclick="pagechange('modadmin');" />
-            <strong><label for="case">Ajouter un administrateur</label></strong>
+           <?php if($bddCo->role == 1){?> <input type="radio" name="checkonscreen" id="2" onclick="pagechange('modadmin');" />
+            <strong><label for="case">Ajouter un administrateur</label></strong><?php }; ?>
         </header>
 
 <?php foreach($services as $service){
@@ -177,8 +178,8 @@
 
         <!--| Section Modification Administrateurs |-->
 
-        <section id="modadmin" class="form" style="visibility:hidden; display:none">
-            <form method="post" action="admin_meteo.php">
+	<?php if($bddCo->role == 1){ ?> <section id="modadmin" class="form" style="visibility:hidden; display:none">
+    	    <form method="post" action="admin_meteo.php">
                 <input type="hidden" name="act" value="addmin">
                 <div id="surnameadmin">Quel est le prénom de l'administrateur à ajouter ?
                     <input type="text" name="surnameadmin">
@@ -187,7 +188,7 @@
                     <input type="text" name="nameadmin">
                 </div>
                 <div id="mailadmin">Quel est l'adresse mail de l'administrateur à ajouter ?
-                    <input type="text" name="mailadmin">
+                    <input type="email" placeholder="Mail" required name="mailadmin">
                 </div>
                 <div id="rank">Sera-t-il super-administrateur ?
                     <input type="radio" name="superadmin" value="1" id="yes"/> Yes
@@ -195,6 +196,6 @@
                 </div>
                 <input type="submit" value="Ajouter Admin" name="adminMit" />
             </form>
-        </section>
+        </section><?php }; ?>
     </body>
     </html>

@@ -1,11 +1,12 @@
     <!DOCTYPE HTML>
     <html lang="fr">
 
-    <head>
+   <head>
         <title>Météo des Services CNRS | En cours de maintenance</title>
         <link href="../css/style.css" type="text/css" rel="stylesheet" />
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
         <?php $bddCo->checkUser();
-        if($bddCo->logged == 1){
+       if($bddCo->logged == 1){
             echo '<a> Bienvenue '.$bddCo->user.' !<br /></a>';
             echo '<a href="?action=logout">Se déconnecter</a>';
         } else { echo'<a href="?action=shiblogin">login avec Shibboleth</a>'; } 

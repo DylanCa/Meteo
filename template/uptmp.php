@@ -4,8 +4,8 @@
 <head>
         <title>Météo des Services CNRS | En cours de maintenance</title>
         <link href="../css/style.css" type="text/css" rel="stylesheet" />  
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
         <script src="./ressources/scripts.js"></script>
-        
 
     </head>
 
@@ -30,7 +30,7 @@
 		<form method="post" action="updates.php">
 	        <input type="hidden" name="tri" value="id">
         	<select name="chooseservice" id="chooseservice">
-        		<option value="">Tous les services</option>
+        		<option value="0">Tous les services</option>
                     <?php foreach($services as $service){
                             if( $service['Actif'] == 1){
                             ?> <option value="<?= $service['ID']; ?>" style="color:green">
@@ -41,19 +41,20 @@
                                 <?= $service['Service']; ?>
                                 </option> <?php 
                             }
-                        }?>
-                    ?>       
+                        }?>   
             </select>            
             <script>lastDDM('chooseservice', <?php echo $_REQUEST['chooseservice'] ?>);</script> 
 
+
             <select name="choosemod" id="choosemod">
-                <option value="">Toutes les entrées</option>
-                <option value="Modification">Modifications</option>
-                <option value="Ajout">Ajout d'un service</option>
-                <option value="On/Off">Activation / Désactivation</option>
+                <option value="0">Toutes les entrées</option>
+                <option value="1">Modifications</option>
+                <option value="2">Ajout d'un service</option>
+                <option value="3">Activation / Désactivation</option>
             </select>
 
-            <script>lastDDM('choosemod', <?php echo json_encode($_REQUEST['choosemod']) ?>);</script>
+
+            <script>lastDDM('choosemod', <?php echo $_REQUEST['choosemod']; ?>);</script>
             <input type="submit" value="Trier" name="triMit"/>
 
 		</form>
