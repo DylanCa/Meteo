@@ -15,6 +15,27 @@ function pagechange(id) {
     curr = document.getElementById(id);
     curr.style.visibility = 'visible';
     curr.style.display = 'block';
+
+    switch(id){
+        case 'modserv':
+            document.getElementById("current").innerHTML = "Modifier un service existant";
+            break;
+        case 'addserv':
+            document.getElementById("current").innerHTML = "Ajouter un service";
+            break;
+
+        case 'delserv':
+            document.getElementById("current").innerHTML = "Désactiver un service";
+            break;
+
+        case 'modadmin':
+            document.getElementById("current").innerHTML = "Ajouter un administrateur";
+            break;
+
+        default:
+            document.getElementById("current").innerHTML = "Modifier un service existant";
+            break;
+    }
 }
 
 $(document).ready(function () {
@@ -76,3 +97,10 @@ function lastDDM(id, value){
     };
 
 }(this, this.document));
+
+(function (window, document) {
+document.getElementById('toggle').addEventListener('click', function (e) {
+    document.getElementById('tuckedMenu').classList.toggle('custom-menu-tucked');
+    document.getElementById('toggle').classList.toggle('x');
+});
+})(this, this.document);

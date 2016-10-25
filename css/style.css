@@ -1,40 +1,4 @@
-﻿ #menu ul {
-     font: bold 11px Batang, arial, serif;
-     list-style-type: none;
-     padding-bottom: 24px;
-     /* à modifier suivant la taille de la police ET de la hauteur de l'onglet dans #onglets li */
-     border-bottom: 1px solid #9EA0A1;
-     margin-left: 0;
- }
- 
- #menu a {
-     display: block;
-     color: #666;
-     text-decoration: none;
-     padding: 4px;
- }
- 
- #menu a:hover {
-     background: #fff;
- }
- 
- #menu li {
-     float: left;
-     height: 21px;
-     /* à modifier suivant la taille de la police pour centrer le texte dans l'onglet */
-     background-color: #F4F9FD;
-     margin: 2px 2px 0 2px !important;
-     /* Pour les navigateurs autre que IE */
-     margin: 1px 2px 0 2px;
-     /* Pour IE  */
-     border: 1px solid #9EA0A1;
- }
- 
- #menu li.active {
-     border-bottom: 1px solid #fff;
-     background-color: #fff;
- }
- 
+﻿
  #affichage ul {
      list-style-type: none;
      clear: left;
@@ -53,6 +17,9 @@
      border: 2px;
  }
 
+ .histo {
+    margin: auto;
+ }
 /* Layout Pure CSS */
 
 body {
@@ -90,7 +57,7 @@ This is the parent `<div>` that contains the menu and the content area.
     }
 
     #layout.active .menu-link {
-        left: 150px;
+        left: 200px;
     }
 /*
 The content `<div>` is where all your content goes.
@@ -98,7 +65,7 @@ The content `<div>` is where all your content goes.
 .content {
     margin: 0 auto;
     padding: 0 2em;
-    max-width: 800px;
+    max-width: 750px;
     margin-bottom: 50px;
     line-height: 1.6em;
 }
@@ -137,7 +104,7 @@ appears on the left side of the page.
 
 #menu {
     margin-left: -150px; /* "#menu" width */
-    width: 150px;
+    width: 200px;
     position: fixed;
     top: 0;
     left: 0;

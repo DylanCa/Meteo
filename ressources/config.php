@@ -13,6 +13,14 @@ function comp($a, $b)
     return ($a < $b) ? -1 : 1;
 }
 
+if(isset($_REQUEST['action'])){
+	if($_REQUEST['action'] == 'shiblogin'){
+	    $_SESSION['user'] = "dylan.cattelan@gmail.com";
+	    $bddCo->checkUser();
+	} else if($_REQUEST['action'] == 'logout' && isset($_SESSION['user'])){
+		unset($_SESSION['user']);
+	}
+}
 
 function triArrayM($array, $on, $order=SORT_ASC){
 

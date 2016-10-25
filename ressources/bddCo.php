@@ -20,6 +20,8 @@ class bddCo{
    }
 
    function checkUser(){
+
+    
         if(isset($_SESSION['user'])){
             $check = $this->bdd->query("SELECT Prenom, Nom, Role FROM users WHERE Mail = '".$_SESSION['user']."'");
 

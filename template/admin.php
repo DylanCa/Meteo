@@ -24,37 +24,82 @@
 
         <!--| Section Onglets + choix formulaire |-->
 
-        <header>
-            <h1>Panneau d'Admin de la Météo des Services | WIP</h1>
-            <nav>
-                <div id="menu">
-                    <ul id="onglets">
-                        <li><a href="index.php">Dashboard Météo</a></li>
-                        <li class="active"><a href="admin_meteo.php">Administration</a></li>
-                        <li><a href="updates.php">Historique de modifications</a></li>
-                    </ul>
-                </div>
-            </nav>
+        <body>
+<div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
 
-            <input type="radio" name="checkonscreen" id="1" checked onclick="pagechange('modserv');" />
-            <strong><label for="case">Modifier un Service</label></strong>
+<div id="menu">
+        <div class="pure-menu">
+            <ul class="pure-menu-list" style="text-align: center">
+                <?php $bddCo->checkUser();
+               if($bddCo->logged == 1){
+                    echo '<a class="pure-menu-heading" href="?action=logout">Logout</a></li>';
+                    echo '<li class="pure-menu-item pure-menu-selected"><a href="admin_meteo.php" class="pure-menu-link">Administration</a></li>';
+                    } else { echo'<a class="pure-menu-heading log" href="?action=shiblogin">Login</a>'; } 
+                ?>
+                <li><br /><hr /><br /></li>
+                <li class="pure-menu-item"><a href="index.php" class="pure-menu-link">Accueil</a></li>
 
-            <input type="radio" name="checkonscreen" id="2" onclick="pagechange('addserv');" />
-            <strong><label for="case">Ajouter un Service</label></strong>
+                <li class="pure-menu-item"><a href="updates.php" class="pure-menu-link">Historique</a>
 
-            <input type="radio" name="checkonscreen" id="3" onclick="pagechange('delserv');" />
-            <label for="case"><strong style="color:green">Activer</strong> / <strong style="color:red">Désactiver un Service</strong></label>
+                <li><br /><hr /><br /></li>
 
-           <?php if($bddCo->role == 1){?> <input type="radio" name="checkonscreen" id="2" onclick="pagechange('modadmin');" />
-            <strong><label for="case">Ajouter un administrateur</label></strong><?php }; ?>
-        </header>
+                <?php if(isset($bddCo->user) && ($bddCo->role == 1 || $bddCo->role == 2 )){ ?>
+                <li class="pure-menu-item"><a href="#" onclick="pagechange('modserv');" class="pure-menu-link">Modifier un Service</a></li>
 
-<?php foreach($services as $service){
+                <li class="pure-menu-item"><a href="#" onclick="pagechange('addserv');" class="pure-menu-link">Ajouter un Service</a></li>
+
+                <li class="pure-menu-item"><a href="#" onclick="pagechange('delserv');" class="pure-menu-link"><strong style="color:green">Activer</strong> <strong style="color:red">Désactiver</strong><br />un Service</a></li>
+                <?php if($bddCo->role == 1){?><li class="pure-menu-item"><a href="#" onclick="pagechange('modadmin');" class="pure-menu-link"><strong>Ajouter un<br/>administrateur</label><?php }; ?></a></li>
+                </li> <?php } ?>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+
+<div id="main">
+        <div class="header">
+            <h1>Panneau d'administration</h1>
+            <?php if(isset($bddCo->user) && ($bddCo->role == 1 || $bddCo->role == 2 )){ ?>
+                    <h2 id="current">Modifier un service existant</h2> <?php } else {
+                        ?> <h2>Vous n'avez pas les droits requis.</h2><?php } ?>
+                    
+        </div>
+
+    <!-- Partie menu horizontal 
+
+    <div class="custom-menu-wrapper">
+    <div class="pure-menu custom-menu custom-menu-top">
+        <a href="admin_meteo.php" class="pure-menu-heading custom-menu-brand">Administration</a>
+        <a href="#" class="custom-menu-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
+    </div>
+    <div class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-menu custom-menu-bottom custom-menu-tucked" id="tuckedMenu">
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="#" onclick="pagechange('modserv');" class="pure-menu-link">Modifier un Service</a></li>
+
+            <li class="pure-menu-item"><a href="#" onclick="pagechange('addserv');" class="pure-menu-link">Ajouter un Service</a></li>
+            </ul><br/> <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="#" onclick="pagechange('delserv');" class="pure-menu-link"><strong style="color:green">Activer</strong> / <strong style="color:red">Désactiver un Service</strong></a></li>
+            <?php if($bddCo->role == 1){?><li class="pure-menu-item"><a href="#" onclick="pagechange('modadmin');" class="pure-menu-link"><strong>Ajouter un administrateur</label><?php }; ?></a></li>
+        </ul>
+    </div>
+</div> -->
+
+<?php if(isset($bddCo->user) && ($bddCo->role == 1 || $bddCo->role == 2 )){
+    foreach($services as $service){
     
 } 
     ?>
         <!--| Section Modifier un Service |-->
-
+    <div class="content">
         <section id="modserv" class="form" style="visibility:visible; display:block">
             <form method="post" action="admin_meteo.php">
                 <input type="hidden" name="act" value="modify">
@@ -196,6 +241,6 @@
                 </div>
                 <input type="submit" value="Ajouter Admin" name="adminMit" />
             </form>
-        </section><?php }; ?>
+        </section><?php }; }?>
     </body>
     </html>

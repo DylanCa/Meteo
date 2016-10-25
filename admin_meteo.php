@@ -1,7 +1,7 @@
 <?php include("./ressources/config.php"); 
     
     $bddCo->checkUser();
-    if(isset($bddCo->user) && ($bddCo->role == 1 || $bddCo->role == 2 )){
+    
             $tmp = '';
             $lastupby = $bddCo->user;
             $website = '';
@@ -59,6 +59,5 @@
                     include("./template/admin.php");
                     break;
         }
-   } else { echo "Tu n'as pas les droits requis.";}
 
 ?>

@@ -31,11 +31,9 @@
                             echo "</ul><ul class:\"meteo\">";
                         }
 
+                        $comment="<br /><br />Last Updated : ".$sun[3]."<br /><br/>".$sun[2]."<br /><br /></li></a>";
 
-                        $affichage="&nbsp;&nbsp;<img src=\"images/" . $images[$x] . ".svg\" title=\"" . $texte_alt[$x] . "\" alt=\"" .$texte_alt[$x]. "\" height=\"40px\" style=\"vertical-align:middle\"";
-                        $comment="<br /><br />".$sun[2]."<br /><br/>Last Updated : ".$sun[3]."<br /><br /></li></a>";
-
-                        echo "<a href=\"".$sun[4]."\"><li style=\"background-color: " . $couleur_etat[$x] . "\"><strong>". $sun[0] ."</strong>". $affichage. $comment;
+                        echo "<a href=\"".$sun[4]."\"><li style=\"background: url(images/".$images[$x]."b.jpg); background-repeat: no-repeat; background-position: center; text-align: center\"><strong style=\"color:white; text-shadow: 2px 2px 8px #000000\">". $sun[0] .$comment ."</strong>";
                     }
                 }
             }
