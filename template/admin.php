@@ -5,11 +5,10 @@
         <title>L'offre de services aux unités</title>
         <link href="../css/style.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Si pas internet : <script src="/ressources/jquery-3.1.1.min.js"></script> -->
         
-        <script src="/ressources/scripts.js"></script>
     </head>
 
     <body>
@@ -35,27 +34,28 @@
 <div id="menu">
         <div class="pure-menu">
             <ul class="pure-menu-list" style="text-align: center">
+
                 <?php $bddCo->checkUser();
                if($bddCo->logged == 1){
                     echo '<a class="pure-menu-heading" href="?action=logout">Logout</a></li>';
                     echo '<li class="pure-menu-item pure-menu-selected"><a href="admin_meteo.php" class="pure-menu-link">Administration</a></li>';
+                    echo '<li class="pure-menu-item"><a href="updates.php" class="pure-menu-link">Historique</a>';
                     } else { echo'<a class="pure-menu-heading log" href="?action=shiblogin">Login</a>'; } 
                 ?>
                 <li><br /><hr /><br /></li>
                 <li class="pure-menu-item"><a href="index.php" class="pure-menu-link">Accueil</a></li>
 
-                <li class="pure-menu-item"><a href="updates.php" class="pure-menu-link">Historique</a>
-
                 <li><br /><hr /><br /></li>
 
                 <?php if(isset($bddCo->user) && ($bddCo->role == 1 || $bddCo->role == 2 )){ ?>
+                <h5>
                 <li class="pure-menu-item"><a href="#" onclick="pagechange('modserv');" class="pure-menu-link">Modifier un Service</a></li>
 
                 <li class="pure-menu-item"><a href="#" onclick="pagechange('addserv');" class="pure-menu-link">Ajouter un Service</a></li>
 
                 <li class="pure-menu-item"><a href="#" onclick="pagechange('delserv');" class="pure-menu-link"><strong style="color:green">Activer</strong> <strong style="color:red">Désactiver</strong><br />un Service</a></li>
-                <?php if($bddCo->role == 1){?><li class="pure-menu-item"><a href="#" onclick="pagechange('modadmin');" class="pure-menu-link"><strong>Ajouter un<br/>administrateur</label><?php }; ?></a></li>
-                </li> <?php } ?>
+                <?php if($bddCo->role == 1){?><li class="pure-menu-item"><a href="#" onclick="pagechange('modadmin');" class="pure-menu-link"><strong>Ajouter un<br/>administrateur</strong><?php }; ?></a></li>
+                </li></h5> <?php } ?>
             </ul>
         </div>
     </div>
@@ -88,7 +88,7 @@
             <li class="pure-menu-item"><a href="#" onclick="pagechange('addserv');" class="pure-menu-link">Ajouter un Service</a></li>
             </ul><br/> <ul class="pure-menu-list">
             <li class="pure-menu-item"><a href="#" onclick="pagechange('delserv');" class="pure-menu-link"><strong style="color:green">Activer</strong> / <strong style="color:red">Désactiver un Service</strong></a></li>
-            <?php if($bddCo->role == 1){?><li class="pure-menu-item"><a href="#" onclick="pagechange('modadmin');" class="pure-menu-link"><strong>Ajouter un administrateur</label><?php }; ?></a></li>
+            <?php if($bddCo->role == 1){?><li class="pure-menu-item"><a href="#" onclick="pagechange('modadmin');" class="pure-menu-link"><strong>Ajouter un administrateur</strong><?php }; ?></a></li>
         </ul>
     </div>
 </div> -->
@@ -98,8 +98,9 @@
     
 } 
     ?>
-        <!--| Section Modifier un Service |-->
     <div class="content">
+        <!--| Section Modifier un Service |-->
+    
         <section id="modserv" class="form" style="visibility:visible; display:block">
             <form method="post" action="admin_meteo.php">
                 <input type="hidden" name="act" value="modify">
@@ -242,5 +243,6 @@
                 <input type="submit" value="Ajouter Admin" name="adminMit" />
             </form>
         </section><?php }; }?>
+        <script src="/ressources/scripts.js"></script>
     </body>
     </html>

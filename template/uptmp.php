@@ -4,38 +4,44 @@
     <head>
         <title>Météo des Services CNRS | En cours de maintenance</title>
         <link href="../css/style.css" type="text/css" rel="stylesheet" />  
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
         <script src="./ressources/scripts.js"></script>
 
     </head>
+<body>
+<div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
 
-    <body>
         <div id="menu">
-            <div class="pure-menu">
-                <ul class="pure-menu-list" style="text-align: center">
-                    <?php $bddCo->checkUser();
-                   if($bddCo->logged == 1){
+        <div class="pure-menu">
+            <ul class="pure-menu-list" style="text-align: center">
+                <?php $bddCo->checkUser();
+               if($bddCo->logged == 1){
                     echo '<a class="pure-menu-heading" href="?action=logout">Logout</a></li>';
                     echo '<li class="pure-menu-item"><a href="admin_meteo.php" class="pure-menu-link">Administration</a></li>';
-                    } else { echo '<a class="pure-menu-heading log" href="?action=shiblogin">Login</a>'; } 
-                    ?>
-                    <li><br /><hr /><br /></li>
-                    <li class="pure-menu-item"><a href="index.php" class="pure-menu-link">Accueil</a></li>
-
-                    <li class="pure-menu-item pure-menu-selected"><a href="updates.php" class="pure-menu-link">Historique</a>
-                    </li>
-                </ul>
-            </div>
+                    echo '<li class="pure-menu-item pure-menu-selected"><a href="updates.php" class="pure-menu-link">Historique</a>';
+                    } else { echo'<a class="pure-menu-heading log" href="?action=shiblogin">Login</a>'; } 
+                ?>
+                <li><br /><hr /><br /></li>
+                <li class="pure-menu-item"><a href="index.php" class="pure-menu-link">Accueil</a></li>
+            </ul>
         </div>
+    </div>
 
         <div id="main">
             <div class="header">
                 <h1>Historique</h1>
-                <h2>Infos à rajouter ici</h2>
+                <?php if($bddCo->logged == 1){ ?><h2>Les modifications sont mises à jour automatiquement.</h2> <?php } else { ?> <h2>Vous n'avez pas les droits requis.</h2> <?php } ?>
         </div>
         <br />
-<div id="layout">
-    <div class="content histo">
+
+        <?php if($bddCo->logged == 1){ ?>
+    <div class="content">
     	<section class="chooseservice">
     		<form method="post" action="updates.php">
     	        <input type="hidden" name="tri" value="id">
@@ -57,7 +63,7 @@
 
 
                 <select name="choosemod" id="choosemod">
-                    <option value="0">Toutes les entrées</option>
+                    <option value="0">Tous les types</option>
                     <option value="1">Modifications</option>
                     <option value="2">Ajout d'un service</option>
                     <option value="3">Activation / Désactivation</option>
@@ -76,7 +82,9 @@
                 </ul>
             </div>
         </section>
-        </div>
-        </div>
+        </div> <?php } ?>
+
+
+        <script src="../ressources/scripts.js"></script>
     </body>
 </html>

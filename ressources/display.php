@@ -6,7 +6,7 @@
             $texte_alt = ["néant", "nominal", "perturbations", "indisponible"];
             $couleur_etat = ["néant","rgba(100,250,100,0.5)","rgba(250,150,0,0.5)","rgba(250,0,0,0.5)"]; 
 
-            $brequest = 4;
+            $brequest = 3;
 
             foreach($servicesList as $data){
                 if($data['Actif'] == 1){
@@ -28,15 +28,13 @@
 
                         if($brequest != $x){
                             $brequest = $x;
-                            echo "</ul><ul class:\"meteo\">";
+                            echo "</ul><ul class:\"meteo".$sun[1]."\">";
                         }
-
-                        $comment="<br /><br />Last Updated : ".$sun[3]."<br /><br/>".$sun[2]."<br /><br /></li></a>";
-
-                        echo "<a href=\"".$sun[4]."\"><li style=\"background: url(images/".$images[$x]."b.jpg); background-repeat: no-repeat; background-position: center; text-align: center\"><strong style=\"color:white; text-shadow: 2px 2px 8px #000000\">". $sun[0] .$comment ."</strong>";
+                        echo "<a href=\"".$sun[4]."\"><li style=\"background: url(images/".$images[$x]."b.jpg); background-repeat: no-repeat; background-position: center; text-align: center\"><strong style=\"color:white; text-shadow: 2px 2px 8px #000000\"><h3>". $sun[0]."</h3></strong></li></a>";
                     }
                 }
             }
+            echo "</ul>";
         }
 
     function printCom($comList, $servID, $histoKind){
@@ -47,7 +45,7 @@
                 foreach($comList as $com){
                 if(($com['ID'] == $servID || $servID == NULL) && ($com['ChangeType'] == $histoKind || $histoKind == NULL)){
                     if($com['Etat'] != 0 && $com['Actif'] == 1){
-                        echo "<li><img src=\"images/" . $images[$com['Etat']] . ".svg\" title=\"" . $com['Service'] . "\" alt=\"" .$com['Service']. "\" height=\"20px\" style=\"vertical-align:middle\"> - <strong>".$com['Service']."</strong> - <i>Last Update : ".$com['LastUpdated']." by ".$com['LastUpdatedBy']."</i> - Update Type : <strong>".$com['ChangeType']."</strong><ul>";
+                        echo "<li><img src=\"images/" . $images[$com['Etat']] . ".svg\" title=\"" . $com['Service'] . "\" alt=\"" .$com['Service']. "\" height=\"20px\" style=\"vertical-align:middle\"> - <strong>".$com['Service']."</strong> - <i>Last Update : ".$com['LastUpdated']." by ".$com['LastUpdatedBy']."</i> - Type : <strong>".$com['ChangeType']."</strong><ul>";
                         if(!empty($com['Commentaire'])){
                             echo "<li><strong><i>Ajout d'un commentaire </i></strong>: ( ".$com['Commentaire']." )</li><p/>";
                         }

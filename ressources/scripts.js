@@ -38,19 +38,7 @@ function pagechange(id) {
     }
 }
 
-$(document).ready(function () {
 
-    // everytime the dropdown changes
-    $('select[name=modservmenu]').change(function () {
-        var val = parseInt($(this).val());
-       $('input[name=websitemod]').val(tab[val].Website);
-       $('input[name=lastupby]').val(tab[val].LastUpdatedBy);
-       $('textarea[name=commod]').val(tab[val].Commentaire);
-       $("#o"+tab[val].Etat).prop("checked", true)
-
-    });
-
-})
 
 
 function lastDDM(id, value){
@@ -98,9 +86,16 @@ function lastDDM(id, value){
 
 }(this, this.document));
 
-(function (window, document) {
-document.getElementById('toggle').addEventListener('click', function (e) {
-    document.getElementById('tuckedMenu').classList.toggle('custom-menu-tucked');
-    document.getElementById('toggle').classList.toggle('x');
-});
-})(this, this.document);
+$(document).ready(function () {
+
+    // everytime the dropdown changes
+    $('select[name=modservmenu]').change(function () {
+        var val = parseInt($(this).val());
+       $('input[name=websitemod]').val(tab[val].Website);
+       $('input[name=lastupby]').val(tab[val].LastUpdatedBy);
+       $('textarea[name=commod]').val(tab[val].Commentaire);
+       $("#o"+tab[val].Etat).prop("checked", true)
+
+    });
+
+})
