@@ -45,7 +45,7 @@
                 foreach($comList as $com){
                 if(($com['ID'] == $servID || $servID == NULL) && ($com['ChangeType'] == $histoKind || $histoKind == NULL)){
                     if($com['Etat'] != 0 && $com['Actif'] == 1){
-                        echo "<li><img src=\"images/" . $images[$com['Etat']] . ".svg\" title=\"" . $com['Service'] . "\" alt=\"" .$com['Service']. "\" height=\"20px\" style=\"vertical-align:middle\"> - <strong>".$com['Service']."</strong> - <i>Last Update : ".$com['LastUpdated']." by ".$com['LastUpdatedBy']."</i> - Type : <strong>".$com['ChangeType']."</strong><ul>";
+                        echo "<li><img src=\"../images/" . $images[$com['Etat']] . ".svg\" title=\"" . $com['Service'] . "\" alt=\"" .$com['Service']. "\" height=\"20px\" style=\"vertical-align:middle\"> - <strong>".$com['Service']."</strong> - <i>Last Update : ".$com['LastUpdated']." by ".$com['LastUpdatedBy']."</i> - Type : <strong>".$com['ChangeType']."</strong><ul>";
                         if(!empty($com['Commentaire'])){
                             echo "<li><strong><i>Ajout d'un commentaire </i></strong>: ( ".$com['Commentaire']." )</li><p/>";
                         }

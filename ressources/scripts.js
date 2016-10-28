@@ -28,8 +28,12 @@ function pagechange(id) {
             document.getElementById("current").innerHTML = "Désactiver un service";
             break;
 
-        case 'modadmin':
+        case 'addmin':
             document.getElementById("current").innerHTML = "Ajouter un administrateur";
+            break;
+
+        case 'deladmin':
+            document.getElementById("current").innerHTML = "Modifier ou Supprimer un administrateur";
             break;
 
         default:
@@ -94,8 +98,17 @@ $(document).ready(function () {
        $('input[name=websitemod]').val(tab[val].Website);
        $('input[name=lastupby]').val(tab[val].LastUpdatedBy);
        $('textarea[name=commod]').val(tab[val].Commentaire);
-       $("#o"+tab[val].Etat).prop("checked", true)
+       $('select[name=etatmod]').val(tab[val].Etat);
 
     });
 
-})
+    $('select[name=addmin]').change(function () {
+        var val = parseInt($(this).val());
+       $('input[name=nomadmin]').val(admintab[val].Nom);
+       $('input[name=prenomadmin]').val(admintab[val].Prenom);
+       $('input[name=delmailadmin]').val(admintab[val].Mail);
+       $('select[name=roleadmin]').val(admintab[val].Role);
+
+});
+
+});

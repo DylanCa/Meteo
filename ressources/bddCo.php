@@ -7,23 +7,29 @@ class bddCo{
     var $role = '';
     var $logged = 0;
 
-   public function __construct(){ 
+public function __construct(){ 
         
 
-       $this->bdd = new PDO('mysql:host=localhost;dbname=meteoservdb_rec;charset=utf8', 'root', ''); 
+       $this->bdd = new PDO('mysql:host=localhost;dbname=meteoservdb_rec;charset=utf8', 'root', '');
+ 
    }
-   
-   function shibLogin(){
-        header("Location: https://application.cnrs.fr/Shibboleth.sso/Login?target=https://application.cnrs.fr/myBlog"); ## A changer en fonction
-        ## Cookies
-        exit();
+ 
+
+   function getListAdmin(){
+        $admin = $this->bdd->query('SELECT * FROM users ORDER BY mail');
+            $tab = [];
+            while($data = $admin->fetch(PDO::FETCH_ASSOC))
+            { 
+                $tab[$data['ID']] = $data;
+             }
+             return $tab;
    }
 
    function checkUser(){
 
     
-        if(isset($_SESSION['user'])){
-            $check = $this->bdd->query("SELECT Prenom, Nom, Role FROM users WHERE Mail = '".$_SESSION['user']."'");
+        if(isset($_SERVER['HTTP_MAIL'])){
+            $check = $this->bdd->query("SELECT Prenom, Nom, Role FROM users WHERE Mail = '".$_SERVER['HTTP_MAIL']."'");
 
 
             $user = $check->fetch();
@@ -129,6 +135,18 @@ class bddCo{
 
             $updb = $this->bdd->query($sql);
         } // else script erreur
+    }
+
+    function modifadmin($role, $nom, $prenom, $mail, $id){
+        $sql = "UPDATE users SET Role = '".$role."', Nom = '".$nom."', Prenom = '".$prenom."', Mail = '".$mail."' WHERE ID = ".$id;
+
+            $updb = $this->bdd->query($sql);
+    }
+
+    function deladmin($id){
+        $sql = "DELETE FROM users WHERE ID = ".$id;
+
+        $updb = $this->bdd->query($sql);
     }
 
     function getWebsite(){

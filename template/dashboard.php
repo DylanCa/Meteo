@@ -5,7 +5,7 @@
     <title>Météo des Services CNRS | En cours de maintenance</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../css/style.css" type="text/css" rel="stylesheet" />
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css" />
+  
 </head>
 
 <body>
@@ -21,10 +21,10 @@
             <ul class="pure-menu-list" style="text-align: center">
                 <?php $bddCo->checkUser();
                if($bddCo->logged == 1){
-                    echo '<a class="pure-menu-heading" href="?action=logout">Logout</a></li>';
-                    echo '<li class="pure-menu-item"><a href="admin_meteo.php" class="pure-menu-link">Administration</a></li>';
-                    echo '<li class="pure-menu-item"><a href="updates.php" class="pure-menu-link">Historique</a>';
-                    } else { echo'<a class="pure-menu-heading log" href="?action=shiblogin">Login</a>'; } 
+                    echo '<a class="pure-menu-heading" href="/index.php?action=logout">Logout</a></li>';
+                    echo '<li class="pure-menu-item"><a href="/admin/admin_meteo.php" class="pure-menu-link">Administration</a></li>';
+                    echo '<li class="pure-menu-item"><a href="/admin/updates.php" class="pure-menu-link">Historique</a>';
+                    } else { echo'<a class="pure-menu-heading log" href="/admin/admin_meteo.php?action=shiblogin">Login</a>'; } 
                 ?>
                 <li><br /><hr /><br /></li>
                 <li class="pure-menu-item pure-menu-selected"><a href="index.php" class="pure-menu-link">Accueil</a></li>
