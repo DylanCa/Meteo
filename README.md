@@ -1,4 +1,4 @@
-# Meteo
+# Meteo - DSI CNRS Labège
 Internship project ( HTML / PHP / CSS / JS / SQL )
 
 A little project for my 2nd year Internship. Nothing crazy.
